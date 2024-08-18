@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+html {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(to left top, #bdf993, #6752b5);
+  background-size: 500% 100%;
+  animation: gradient 5s ease infinite;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#casecadeui_container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  align-items: center;
+  margin: 20% 0 20% 0;
+}
+
+#casecade {
+  color: #f4edf7;
+  font: 600 2em "Inter", sans-serif;
+}
+
+#ui {
+  position: relative;
+  color: #280f3d;
+  background-color: #f4edf7;
+  border: transparent;
+  border-radius: 9px;
+  font: 800 2em "Inter", sans-serif;
+  padding: 0.10em 0.15em;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
