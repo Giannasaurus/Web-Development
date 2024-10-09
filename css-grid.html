@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox | Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    />
+    <style type="text/css">
+      body {
+        font-family: "Inter", sans-serif;
+        box-sizing: border-box;
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+      }
+      .site-window {
+        display: grid;
+        grid-template-columns: 384px 1536px; /*extrinsic sizing to avoid sidebar minimization*/
+        height: 90vh;
+        margin: 1em;
+      }
+      .sidebar-container {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 1em;
+      }
+      h1 {
+        padding: 0;
+        margin: 0;
+      }
+      .flex-container {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+      }
+      .flex-item {
+        background-color: #ccc;
+        border: 1px solid #000;
+        padding: 2em 2.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-window">
+      <div class="sidebar-container">
+        <h1>Flexbox Demo [beta Testing]</h1>
+        <button onclick="addFlexItem()">Add Flex Item</button>
+        <button onclick="deleteFlexItem()">Delete Flex Item</button>
+        <h2>Parent Properties</h2>
+        <p>Flex Direction</p>
+        <button onclick="directionRow()">Row</button>
+        <button onclick="directionRowReverse()">Row-Reverse</button>
+        <button onclick="directionColumn()">Column</button>
+        <button onclick="directionColumnReverse()">Column-Reverse</button>
+        <p>Flex Wrap</p>
+        <button onclick="noWrap()">No Wrap</button>
+        <button onclick="withWrap()">Wrap</button>
+        <button onclick="wrapReverse()">Wrap Reverse</button>
+        <p>Justify Content</p>
+        <button onclick="flexStartJC()">Flex-Start</button>
+        <button onclick="flexEndJC()">Flex-End</button>
+        <button onclick="centerJC()">Center</button>
+        <button onclick="spaceBetweenJC()">Space-Between</button>
+        <button onclick="spaceAroundJC()">Space-Around</button>
+        <button onclick="spaceEvenlyJC()">Space-Evenly</button>
+        <p>Align Items</p>
+        <button onclick="flexStartAI()">Flex-Start</button>
+        <button onclick="flexEndAI()">Flex-End</button>
+        <button onclick="centerAI()">Center</button>
+        <button onclick="stretchAI()">Stretch</button>
+        <button onclick="baselineAI()">Baseline</button>
+        <p>Align Content</p>
+        <button onclick="flexStartAC()">Flex-Start</button>
+        <button onclick="flexEndAC()">Flex-End</button>
+        <button onclick="cCenterAC()">Center</button>
+        <button onclick="stretchAC()">Stretch</button>
+        <button onclick="spaceBetweenAC()">Space-Between</button>
+        <button onclick="spaceAroundAC()">Space-Around</button>
+      </div>
+      <div class="flex-container">
+        <div class="flex-item">Flex Item 1</div>
+        <div class="flex-item">Flex Item 2</div>
+        <div class="flex-item">Flex Item 3</div>
+      </div>
+    </div>
+    <script>
+      /*ADD-DELETE*/
+      function addFlexItem() {
+        var flexContainer = document.querySelector(".flex-container");
+        var newItem = document.createElement("div");
+        newItem.classList.add("flex-item");
+        newItem.textContent =
+          "Flex Item" + " " + (flexContainer.childElementCount + 1);
+        flexContainer.appendChild(newItem);
+      }
+      function deleteFlexItem() {
+        var flexContainer = document.querySelector(".flex-container");
+        var lastItem = flexContainer.lastElementChild;
+        if (lastItem) {
+          flexContainer.removeChild(lastItem);
+        } else {
+          /*add a parameter so that it could only delete until the 4th item*/
+          alert("Cannot delete any more items.");
+        }
+      }
+      /*FLEX-DIRECTION*/
+      function directionRow() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.flexDirection = "row";
+      }
+      function directionRowReverse() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.flexDirection = "row-reverse";
+      }
+      function directionColumn() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.flexDirection = "column";
+      }
+      function directionColumnReverse() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.flexDirection = "column-reverse";
+      }
+      /*FLEX-WRAP*/
+      function noWrap() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.flexWrap = "nowrap";
+      }
+      function withWrap() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.flexWrap = "wrap";
+      }
+      function wrapReverse() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.flexWrap = "wrap-reverse";
+      }
+      /*JUSTIFY-CONTENT*/
+      function flexStartJC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.justifyContent = "flex-start";
+      }
+      function flexEndJC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.justifyContent = "flex-end";
+      }
+      function centerJC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.justifyContent = "center";
+      }
+      function spaceBetweenJC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.justifyContent = "space-between";
+      }
+      function spaceAroundJC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.justifyContent = "space-around";
+      }
+      function spaceEvenlyJC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.justifyContent = "space-evenly";
+      }
+      /*ALIGN-ITEMS*/
+      function flexStartAI() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.alignItems = "flex-start";
+      }
+      function flexEndAI() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.alignItems = "flex-end";
+      }
+      function centerAI() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.alignItems = "center";
+      }
+      function stretchAI() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.alignItems = "stretch";
+      }
+      function baselineAI() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.alignItems = "baseline";
+      }
+      /*ALIGN-CONTENT*/
+      function flexStartAC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.alignContent = "flex-start";
+      }
+      function flexEndAC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.alignContent = "flex-end";
+      }
+      function centerAC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.alignContent = "center";
+      }
+      function stretchAC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.alignContent = "stretch";
+      }
+      function spaceBetweenAC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.alignContent = "space-between";
+      }
+      function spaceAroundAC() {
+        var flexContainer = document.querySelector(".flex-container");
+        flexContainer.style.alignContent = "space-around";
+      }
+    </script>
+    <!--NOTES-->
+    <!--
+    1. To improve user experience, instead of different buttons to add and delete items, use an incrementor and a decrementor button for simplicity and enhanced efficiency.
+    2. 
+    -->
+  </body>
+</html>
